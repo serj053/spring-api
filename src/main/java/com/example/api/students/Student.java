@@ -1,8 +1,14 @@
 package com.example.api.students;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
 public class Student {
+    @Id
+    @SequenceGenerator(name = "student_sequence", sequenceName = "student_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_sequence")
     private Long id;
     private String name;
     private LocalDate dob;
@@ -12,6 +18,7 @@ public class Student {
         this.dob = dob;
     }
 
+    //пустой конструктор заполняется данными из таблицы
     public Student() {
     }
 
