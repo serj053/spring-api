@@ -1,8 +1,6 @@
 package com.example.api.students;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,8 +13,16 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+    //вывести список студентов
     @GetMapping(path = "list")
     public List<Student> list() {
         return studentService.list();
+    }
+
+    //добавить студента в список
+    @PostMapping(path = "item")
+    public void add(@RequestBody Student student) {
+        studentService.add(student);
+        //return studentService.list();
     }
 }

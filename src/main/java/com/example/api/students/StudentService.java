@@ -12,4 +12,8 @@ public class StudentService {
         return List.of(new Student("Alex", LocalDate.of(2000, Month.JANUARY, 1)),
                 new Student("Tom", LocalDate.of(2002, Month.MARCH, 6)));
     }
+
+    public void add(Student student) {
+        System.out.println(student);
+    }
 }

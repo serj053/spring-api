@@ -15,6 +15,15 @@ public class Student {
     public Student() {
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dob=" + dob +
+                '}';
+    }
+
     public String getName() {
         return name;
     }
