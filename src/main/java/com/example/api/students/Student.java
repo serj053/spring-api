@@ -1,4 +1,4 @@
-package com.example.api;
+package com.example.api.students;
 
 import java.time.LocalDate;
 
