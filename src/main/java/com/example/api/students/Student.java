@@ -3,6 +3,7 @@ package com.example.api.students;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 public class Student {
@@ -22,13 +23,8 @@ public class Student {
     public Student() {
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", dob=" + dob +
-                '}';
+    public int getAge(){
+        return Period.between(dob, LocalDate.now()).getYears();
     }
 
     public String getName() {
@@ -37,6 +33,15 @@ public class Student {
 
     public LocalDate getDob() {
         return dob;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dob=" + dob +
+                '}';
     }
 
 }
