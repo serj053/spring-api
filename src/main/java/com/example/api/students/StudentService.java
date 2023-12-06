@@ -1,5 +1,6 @@
 package com.example.api.students;
 
+import com.example.api.response.RestApiException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -22,7 +23,7 @@ public class StudentService {
 
     public void add(Student student) {
         if(studentrepository.findStudentByEmail(student.getEmail()).isPresent()){
-            throw new IllegalStateException("Email is busy");
+            throw new RestApiException("Email is busy");
         }
         studentrepository.save(student);
     }
