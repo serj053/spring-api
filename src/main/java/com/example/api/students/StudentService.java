@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Service
 public class StudentService {
@@ -23,7 +24,8 @@ public class StudentService {
 
     public void add(Student student) {
         if(studentrepository.findStudentByEmail(student.getEmail()).isPresent()){
-            throw new RestApiException("Email is busy");
+            Logger.getLogger(StudentService.class.getName()).info("***  Email is busy");
+            throw new IllegalStateException("Email is busy@@@");//RestApiException("Email is busy");
         }
         studentrepository.save(student);
     }

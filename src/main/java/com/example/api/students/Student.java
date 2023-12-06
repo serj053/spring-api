@@ -15,7 +15,6 @@ public class Student {
     @Column(unique=true)//при создании таблицы к этому полю будет добавлен уникальный ключ
     private String email;
 
-
     private LocalDate dob;
 
     public Student(String name, String email, LocalDate dob) {
