@@ -27,8 +27,14 @@ public class StudentController {
         return studentService.list();
     }
 
-    @DeleteMapping(path="item/{studentId}")
-    public void delete(@PathVariable Long studentId ){
+    //удалить студента
+    @DeleteMapping(path = "item/{studentId}")
+    public void delete(@PathVariable Long studentId) {
         studentService.delete(studentId);
+    }
+    //обновление данных
+    @PutMapping(path = "item")
+    public void delete(@RequestBody Student student){
+        studentService.update(student);
     }
 }

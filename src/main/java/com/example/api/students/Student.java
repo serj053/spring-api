@@ -12,10 +12,15 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_sequence")
     private Long id;
     private String name;
+    @Column(unique=true)//при создании таблицы к этому полю будет добавлен уникальный ключ
+    private String email;
+
+
     private LocalDate dob;
 
-    public Student(String name, LocalDate dob) {
+    public Student(String name, String email, LocalDate dob) {
         this.name = name;
+        this.email = email;
         this.dob = dob;
     }
 
@@ -23,8 +28,12 @@ public class Student {
     public Student() {
     }
 
-    public int getAge(){
+    public int getAge() {
         return Period.between(dob, LocalDate.now()).getYears();
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getName() {
@@ -35,13 +44,29 @@ public class Student {
         return dob;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
                 ", dob=" + dob +
                 '}';
     }
-
 }

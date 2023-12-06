@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -25,5 +26,19 @@ public class StudentService {
 
     public void delete(Long studentId) {
         studentrepository.deleteById(studentId);
+    }
+
+    public void update(Student student) {
+        Optional<Student> row = studentrepository.findById(student.getId());
+        if (row.isPresent()) {
+            Student item = row.get();
+            if (!student.getName().isEmpty()) {
+                item.setName(student.getName());
+            }
+            if (student.getDob() != null) {
+                item.setDob(student.getDob());
+            }
+            studentrepository.save(item);
+        }
     }
 }
