@@ -2,9 +2,6 @@ package com.example.api.students;
 
 import com.example.api.response.RestApiException;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
@@ -25,7 +22,8 @@ public class StudentService {
     public void add(Student student) {
         if(studentrepository.findStudentByEmail(student.getEmail()).isPresent()){
             Logger.getLogger(StudentService.class.getName()).info("***  Email is busy");
-            throw new IllegalStateException("Email is busy@@@");//RestApiException("Email is busy");
+            throw new RestApiException("Email is busy (from RestApiException()");
+           // throw new IllegalStateException("Email is busy@@@");//RestApiException("Email is busy");
         }
         studentrepository.save(student);
     }
