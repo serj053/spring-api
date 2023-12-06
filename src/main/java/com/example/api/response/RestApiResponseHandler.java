@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class RestApiExceptionHandler extends RuntimeException{
+public class RestApiResponseHandler extends RuntimeException{
     @ExceptionHandler()
     public ResponseEntity<Object> handleException(Exception e) {
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
