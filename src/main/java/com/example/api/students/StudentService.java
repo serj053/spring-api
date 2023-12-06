@@ -21,6 +21,9 @@ public class StudentService {
     }
 
     public void add(Student student) {
+        if(studentrepository.findStudentByEmail(student.getEmail()).isPresent()){
+            throw new IllegalStateException("Email is busy");
+        }
         studentrepository.save(student);
     }
 
